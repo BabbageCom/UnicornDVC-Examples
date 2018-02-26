@@ -1,0 +1,15 @@
+*.dll
+*.exe
+*.exp
+*.lib
+*.obj
+*.pdb
+*.res
+*.tlb
+*.pyc
+*.pyo
+.sconsign.dblite
+build
+output
+*.class
+*.jar

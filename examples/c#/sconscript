@@ -1,0 +1,11 @@
+Import('env','dotNetAssembly')
+
+exampleCSharp=env.CLIProgram(
+	target='ExampleC#',
+	source=[
+		'ExampleC#.cs',
+	],
+	ASSEMBLYREFS=[dotNetAssembly]
+)
+
+Return('exampleCSharp')

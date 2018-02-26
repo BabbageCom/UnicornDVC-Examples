@@ -1,0 +1,15 @@
+Import('env','projectSubstDict')
+
+dotNetAssemblyName="UnicornDotNet"
+resFile=env.RES(env.Substfile(dotNetAssemblyName+'.rc.subst',SUBST_DICT=projectSubstDict))
+
+dotNetAssembly=env.CLIAssembly(
+	target=dotNetAssemblyName,
+	source=[
+		'Unicorn.cs',
+	],
+	CSCFLAGS=['$CSCFLAGS','-win32res:%s'%resFile[0].tpath],
+)
+
+env.Depends(dotNetAssembly,resFile)
+Return('dotNetAssembly')

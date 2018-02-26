@@ -1,0 +1,21 @@
+Import('env')
+
+javaLibName="Unicorn"
+jnaLib=env.File('jna.jar')
+
+javaClasses=env.Java(
+	target='classesUnicorn',
+	source=[
+		'Unicorn.java',
+	],
+	JAVACFLAGS='$JAVACFLAGS -cp %s'%jnaLib.tpath,
+)
+
+env.Depends(javaClasses,jnaLib)
+
+javaLib=env.Jar(
+	source=[javaClasses,'Manifest.txt'],
+	target=javaLibName,
+)
+
+Return('javaLib','jnaLib')

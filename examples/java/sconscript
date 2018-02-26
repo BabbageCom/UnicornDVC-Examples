@@ -1,0 +1,18 @@
+Import('env','javaLib','jnaLib')
+
+exampleClasses=env.Java(
+	target='classes',
+	source=[
+		'ExampleJava.java',
+	],
+	JAVACFLAGS='$JAVACFLAGS -cp %s;%s'%(jnaLib.tpath,javaLib[0].tpath),
+)
+
+env.Depends(exampleClasses,javaLib)
+
+exampleJava=env.Jar(
+	source=[exampleClasses,'Manifest.txt'],
+	target='exampleJava',
+)
+
+Return('exampleJava')

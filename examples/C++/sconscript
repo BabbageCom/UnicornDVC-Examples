@@ -1,0 +1,13 @@
+Import('env','appLib')
+
+
+exampleCPP=env.Program(
+	target='ExampleC++',
+	source=[
+		'ExampleC++.cpp',
+	],
+	CPPPATH=['$cpppath','#/UnicornDVCAppLib'],
+	LIBS=[appLib[2]],
+)
+
+Return('exampleCPP')

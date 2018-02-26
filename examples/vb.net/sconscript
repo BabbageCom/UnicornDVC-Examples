@@ -1,0 +1,13 @@
+Import('env','dotNetAssembly')
+
+exampleVB=env.CLIProgram(
+	# ugly, but very effective in this simple case
+	CSC='vbc',
+	target='ExampleVB',
+	source=[
+		'ExampleVB.vb',
+	],
+	ASSEMBLYREFS=[dotNetAssembly]
+)
+
+Return('exampleVB')
