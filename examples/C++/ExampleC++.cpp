@@ -17,40 +17,40 @@ PROTO_UNICORN_ONDATARECEIVED Unicorn_OnDataReceived;
 PROTO_UNICORN_ONREADERROR Unicorn_OnReadError;
 PROTO_UNICORN_ONCLOSE Unicorn_OnClose;
 
-DWORD UNICORN_CALL Unicorn_Connected() {
+DWORD WINAPI Unicorn_Connected() {
 	wcout<<L"Connected callback called"<<endl;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_Disconnected(DWORD dwDisconnectCode) {
+DWORD WINAPI Unicorn_Disconnected(DWORD dwDisconnectCode) {
 	wcout<<L"Disconnected callback called with dwDisconnectCode "<<dwDisconnectCode<<endl;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_Terminated() {
+DWORD WINAPI Unicorn_Terminated() {
 	wcout<<L"Terminated callback called"<<endl;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_OnNewChannelConnection() {
+DWORD WINAPI Unicorn_OnNewChannelConnection() {
 	wcout<<L"OnNewChannelConnection callback called"<<endl;
 	opened=TRUE;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_OnDataReceived(DWORD cbSize, BYTE* pBuffer) {
+DWORD WINAPI Unicorn_OnDataReceived(DWORD cbSize, BYTE* pBuffer) {
 	wcout<<L"OnDataReceived called with data '"<<reinterpret_cast<WCHAR*>(pBuffer)<<L"' of size "<<cbSize<<endl;
 	received++;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_OnReadError(DWORD dwErrorCode) {
+DWORD WINAPI Unicorn_OnReadError(DWORD dwErrorCode) {
 	wcout<<L"OnReadError callback called with dwErrorCode "<<dwErrorCode<<endl;
 	opened=FALSE;
 	return 0;
 }
 
-DWORD UNICORN_CALL Unicorn_OnClose() {
+DWORD WINAPI Unicorn_OnClose() {
 	wcout<<L"OnClose callback called"<<endl;
 	opened=FALSE;
 	return 0;
