@@ -14,8 +14,10 @@ javaClasses=env.Java(
 env.Depends(javaClasses,jnaLib)
 
 javaLib=env.Jar(
-	source=[javaClasses,'Manifest.txt'],
-	target=javaLibName,
+	source=[
+		javaClasses, 'Manifest.txt'
+	],
+	target=javaLibName
 )
 
 Return('javaLib','jnaLib')
